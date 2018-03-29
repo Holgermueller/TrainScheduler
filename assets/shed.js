@@ -36,6 +36,11 @@ $("#addTrainBtn").on("click", function(e) {
         time: timeInput,
         frequencty: freqInput,
     });
+
+    $("#trainInput").val("");
+    $("#destInput").val("");
+    $("#timeInput").val("");
+    $("#freqInput").val("");
 });
 
 //create clock and append
@@ -49,12 +54,16 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
     //store snapshot value
     let sv = snapshot.val();
         console.log(sv);
-})
 
-//experiment with moment to get idea of how it works
+    let trainName = snapshot.val().name;
+    let destName = snapshot.val().destination;
+    let timeName = snapshot.val().time;
+    let freqName = snapshot.val().frequency;
 
-
-
+    console.log(trainName);
+    console.log(destName);
+    console.log(timeName);
+    console.log(freqName);
 
 //calculate next arrival
 
@@ -62,3 +71,8 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
 //calculate minutes away
 
 //append everything to schedule
+
+$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqName + 
+"</td><td>" + "</td></tr>")
+
+});
