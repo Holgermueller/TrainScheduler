@@ -12,13 +12,15 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!--firebase-->
 <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<!--fontawesome-->
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <div class="container">
 
        <div class="jumbotron">
-           <h1 class="text-center">Train Scheduler</h1>
+           <h1 class="text-center"><i class="fas fa-train"></i> Train Scheduler</h1>
            <h3 class="text-center">The Go-To App for Trainspotters!</h3>
        </div>
 
@@ -27,7 +29,7 @@
             <!--current train schedule-->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
+                        <h3 class="panel-title"><strong>Current Train Schedule <i class="far fa-clock"></i></strong></h3>
                     </div>
 
                     <div class="panel-body">
@@ -45,11 +47,11 @@
                     </div>
 
                 </div>
-
+<br>
             <!--add a train-->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Add Trains Here</strong></h3>
+                        <h3 class="panel-title"><strong>Add Trains Here <i class="fas fa-list-ul"></i></strong></h3>
                     </div>
                     <div class="panel-body">
 
@@ -66,7 +68,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="train-time-input">First Train Time (HH:mm - military time</label>
+                                <label for="train-time-input">First Train Time (HH:mm - military time)</label>
                                 <input type="text" class="form-control" id="timeInput">
                             </div>
 
@@ -84,8 +86,8 @@
             </div>
        </div>
     </div>
-
-
+<br>
+<footer class="footer">&copy; 2018 Holger Mueller</footer>
 
 
     <!--scripts-->
@@ -99,6 +101,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
   <!--javaScript-->
     <script src="./assets/shed.js"></script>
+<!--moment.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/af.js"></script>
 
 </body>
 </html>
