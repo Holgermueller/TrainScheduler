@@ -8,11 +8,81 @@
 <!--styles-->
 <link rel="stylesheet" href="./assets/reset.css">
 <link rel="stylesheet" href="./assets/styles.css">
-
+<!--bootstrap-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--firebase-->
 
 </head>
 <body>
+    <div class="container">
 
+       <div class="jumbotron">
+           <h1 class="text-center">Train Scheduler</h1>
+           <h3 class="text-center">The Go-To App for Trainspotters!</h3>
+       </div>
+
+       <div class="row">
+            <div class="col-lg-12">
+            <!--current train schedule-->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-hover" id="trainTable">
+                            <thead>
+                                <tr>
+                                    <th id="trainName">Train Name</th>
+                                    <th id="dest">Destination</th>
+                                    <th id="freq">Frequency</th>
+                                    <th id="nxtArrvl">Next Arrival</th>
+                                    <th id="minsAwy">Minutes Away</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+
+            <!--add a train-->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Add Trains Here</strong></h3>
+                    </div>
+                    <div class="panel-body">
+
+                    <!--entry form-->
+                        <form action="">
+                            <div class="form-group">
+                                <label for="train-input">Train Name</label>
+                                <input type="text" class="form-control" id="trainInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="destination-input">Destination</label>
+                                <input type="text" class="form-control" id="destInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="train-time-input">First Train Time (HH:mm - military time</label>
+                                <input type="text" class="form-control" id="timeInput">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="frequency-input">Frequency (min)</label>
+                                <input type="text" class="form-control" id="freqInput">
+                            </div>
+
+                            <button class="btn btn-primary" id="addTrainBtn" type="submit">Submit</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
 
 
 
@@ -23,7 +93,9 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-
+  <!--bootstrap-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
   <!--javaScript-->
     <script src="./assets/shed.js"></script>
 
