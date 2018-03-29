@@ -16,17 +16,25 @@
 
 const database = firebase.database();
 
+moment();
+//console.log(moment);
+
 //declare variables
 
 $("#addTrainBtn").on("click", function(e) {
     e.preventDefault()
+    //figure out where to put thse!!
+    $("#trainInput").empty();
+    $("#destInput").empty();
+    $("#timeInput").empty();
+    $("#freqInput").empty();
     let trainInput = $("#trainInput").val().trim();
         //console.log(trainInput);
     let destInput = $("#destInput").val().trim();
         //console.log(destInput);
     let timeInput = moment($("#timeInput").val().trim(), "HH:mm").format("x");
         //console.log(timeInput);
-    let freqInput = $("#freqInput").val().trim();
+    let freqInput = moment($("#freqInput").val().trim(), "mm").format("x");
         //console.log(freqInput);
 
     //push info to firebase
@@ -34,7 +42,7 @@ $("#addTrainBtn").on("click", function(e) {
         name: trainInput,
         destination: destInput,
         time: timeInput,
-        frequencty: freqInput,
+        frequency: freqInput,
     });
 
     $("#trainInput").val("");
@@ -58,21 +66,24 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
     let trainName = snapshot.val().name;
     let destName = snapshot.val().destination;
     let timeName = snapshot.val().time;
+
+//prettify frequency
     let freqName = snapshot.val().frequency;
+    let freqPretty = moment.unix(freqName).format("mm");
 
     console.log(trainName);
     console.log(destName);
     console.log(timeName);
     console.log(freqName);
 
-//calculate next arrival
+//calculate next arrival from military time
 
 
 //calculate minutes away
 
 //append everything to schedule
 
-$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqName + 
-"</td><td>" + "</td></tr>")
+$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqPretty + 
+" " + "mins" + "</td><td>" + "</td></tr>")
 
 });
