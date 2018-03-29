@@ -24,7 +24,7 @@ $("#addTrainBtn").on("click", function(e) {
         //console.log(trainInput);
     let destInput = $("#destInput").val().trim();
         //console.log(destInput);
-    let timeInput = $("#timeInput").val().trim();
+    let timeInput = moment($("#timeInput").val().trim(), "HH:mm").format("x");
         //console.log(timeInput);
     let freqInput = $("#freqInput").val().trim();
         //console.log(freqInput);
@@ -38,6 +38,12 @@ $("#addTrainBtn").on("click", function(e) {
     });
 });
 
+//create clock and append
+
+let currentTime = new Date();
+    console.log(currentTime);
+    $("#clock").append(currentTime);
+
 //Firebase watcher + initial loader + order/limit Hint
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
     //store snapshot value
@@ -45,7 +51,13 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
         console.log(sv);
 })
 
+//experiment with moment to get idea of how it works
+
+
+
+
 //calculate next arrival
+
 
 //calculate minutes away
 
