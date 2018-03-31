@@ -23,18 +23,18 @@ moment();
 
 $("#addTrainBtn").on("click", function(e) {
     e.preventDefault()
-    //figure out where to put thse!!
+    /*figure out where to put thse!!
     $("#trainInput").empty();
     $("#destInput").empty();
     $("#timeInput").empty();
-    $("#freqInput").empty();
+    $("#freqInput").empty();*/
     let trainInput = $("#trainInput").val().trim();
         //console.log(trainInput);
     let destInput = $("#destInput").val().trim();
         //console.log(destInput);
-    let timeInput = moment($("#timeInput").val().trim(), "HH:mm").format("x");
+    let timeInput = moment($("#timeInput").val().trim(), "HH:mm").format();
         //console.log(timeInput);
-    let freqInput = moment($("#freqInput").val().trim(), "mm").format("x");
+    let freqInput = $("#freqInput").val().trim();
         //console.log(freqInput);
 
     //push info to firebase
@@ -53,37 +53,54 @@ $("#addTrainBtn").on("click", function(e) {
 
 //create clock and append
 
-let currentTime = new Date();
+let currentTime = moment();
     console.log(currentTime);
-    $("#clock").append(currentTime);
+    $("#clock").append(currentTime.format("HH:mm:ss"));
 
 //Firebase watcher + initial loader + order/limit Hint
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
     //store snapshot value
     let sv = snapshot.val();
-        console.log(sv);
+        //console.log(sv);
 
     let trainName = snapshot.val().name;
     let destName = snapshot.val().destination;
     let timeName = snapshot.val().time;
-
-//prettify frequency
     let freqName = snapshot.val().frequency;
-    let freqPretty = moment.unix(freqName).format("mm");
 
-    console.log(trainName);
-    console.log(destName);
-    console.log(timeName);
-    console.log(freqName);
+        //console.log(trainName);
+        //console.log(destName);
+        //console.log(timeName);
+        //console.log(freqName);
+
+//parse frequency
+
+let freqParse = parseInt(freqName);
+    //console.log(freqParse);
+
+
+//calculate minutes away  
+
+let timeMoment = moment(timeName);
+    //console.log(timeMoment);
+
+let diffMinute = moment().diff(timeMoment, "minutes");
+    //console.log(currentTime);
+
+let timeRemainder = diffMinute % freqParse;
+
+let minutesLeft = freqParse - timeRemainder;
 
 //calculate next arrival from military time
 
+let nextTrain = moment().add(minutesLeft, "minutes");
 
-//calculate minutes away
+    //console.log(minutesLeft);
+    //console.log(nextTrain.format("HH:mm"));
 
 //append everything to schedule
 
-$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqPretty + 
-" " + "mins" + "</td><td>" + "</td></tr>")
+$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse + 
+" " + "mins" +  "</td><td>" + moment(nextTrain).format("HH:mm:ss") + "</td><td>" + minutesLeft + "</td></tr>")
 
 });
