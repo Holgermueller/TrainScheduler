@@ -55,7 +55,10 @@ $("#addTrainBtn").on("click", function(e) {
 
 let currentTime = moment();
     console.log(currentTime);
-    $("#clock").append(currentTime.format("HH:mm:ss"));
+    $("#clock1").append(currentTime.format("MM-DD-YYYY"))
+    $("#clock2").append(currentTime.format("HH:mm:ss"));
+   
+    
 
 //Firebase watcher + initial loader + order/limit Hint
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
