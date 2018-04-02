@@ -2,7 +2,6 @@
 
 //initialize Firebase (those 6/7 lines of code)
 
-
   // Initialize Firebase
   const config = {
     apiKey: "AIzaSyDJYYjJOfgVxjcy3DxPSMsF2QU5lcb3mJg",
@@ -55,10 +54,12 @@ $("#addTrainBtn").on("click", function(e) {
 
 let currentTime = moment();
     console.log(currentTime);
-    $("#clock1").append(currentTime.format("MM-DD-YYYY"))
-    $("#clock2").append(currentTime.format("HH:mm:ss"));
-   
-    
+
+function update() {
+    $("#clock1").html(moment().format("MM-DD-YYYY"))
+    $("#clock2").html(moment().format("HH:mm:ss"));
+    }
+    setInterval(update, 1000);
 
 //Firebase watcher + initial loader + order/limit Hint
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
@@ -81,7 +82,6 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
 let freqParse = parseInt(freqName);
     //console.log(freqParse);
 
-
 //calculate minutes away  
 
 let timeMoment = moment(timeName);
@@ -103,7 +103,14 @@ let nextTrain = moment().add(minutesLeft, "minutes");
 
 //append everything to schedule
 
-$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse + 
-" " + "mins" +  "</td><td>" + moment(nextTrain).format("HH:mm:ss") + "</td><td>" + minutesLeft + "</td></tr>")
+$("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse + 
+" " + "mins" +  "</td><td>" + moment(nextTrain).format("HH:mm:ss") + "</td><td>" + minutesLeft + "</td><td>" +
+ "</td><td><button id='rmv'class='rmv'>X</button></td></tr>")
+
+ //remove button
+
+ $("#row").click(function(){
+    $(this).remove();
+ });
 
 });
