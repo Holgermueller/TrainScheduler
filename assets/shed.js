@@ -104,7 +104,7 @@ let nextTrain = moment().add(minutesLeft, "minutes");
 //append everything to schedule
 
 $("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse + 
-" " + "mins" +  "</td><td>" + moment(nextTrain).format("HH:mm:ss") + "</td><td>" + minutesLeft + "</td><td>" +
+" " + "mins" +  "</td><td>" + moment(nextTrain).format("HH:mm") + "</td><td>" + minutesLeft + "</td><td>" +
  "</td><td><button id='rmv'class='rmv'>X</button></td></tr>")
 
  //remove button
