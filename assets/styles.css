@@ -7,3 +7,10 @@
     border-radius: 5px;
     margin-left: 35%;
 }
+
+.rmv {
+    border-radius: 15px;
+    border: 1px solid ghostwhite;
+    background-color: #1f97dd;
+    color: ghostwhite;
+}
