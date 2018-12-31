@@ -1,117 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Train Scheduler</title>
-<!--styles-->
-<link rel="stylesheet" href="./assets/css/reset.css">
-<link rel="stylesheet" href="./assets/css/styles.css">
-<!--jQuery-->
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!--firebase-->
-<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-<!--fontawesome-->
-<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-<!--moment.js-->
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Train Scheduler</title>
+  <!--styles-->
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <!--jQuery-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!--firebase-->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!--fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+    crossorigin="anonymous"></script>
+  <!--moment.js-->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
+
 <body>
-    <div class="wrapper">
+  <div class="wrapper">
     <div class="container">
 
-       <div class="jumbotron jumbo-style jumbo">
-           <h1 class="text-center"><i class="fas fa-train"></i> Train Scheduler</h1>
-           <h3 class="text-center">The Go-To App for Trainspotters!</h3>
-       </div>
+      <div class="jumbotron jumbo-style jumbo">
+        <h1 class="text-center"><i class="fas fa-train"></i> Train Scheduler</h1>
+        <h3 class="text-center">The Go-To App for Trainspotters!</h3>
+      </div>
 
-       <div class="row">
-            <div class="col-lg-12">
-                <!--clock-->
-                <div class="panel panel-primary clock">
-                    <h2 class="text-center">Current Time:</h2>
-                    <h2 id="clock1" class="text-center"></h2>
-                    <h2 id="clock2" class="text-center"></h2>
-                </div>
-                <br>
-            <!--current train schedule-->
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Current Train Schedule <i class="far fa-clock"></i></strong></h3>
-                    </div>
-
-                    <div class="panel-body">
-                        <table class="table table-hover" id="trainTable">
-                            <thead>
-                                <tr>                            
-                                    <th id="trainName">Train Name</th>
-                                    <th id="dest">Destination</th>
-                                    <th id="freq">Frequency</th>
-                                    <th id="nxtArrvl">Next Arrival</th>
-                                    <th id="minsAwy">Minutes Away</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-<br>
-            <!--add a train-->
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Add Trains Here <i class="fas fa-list-ul"></i></strong></h3>
-                    </div>
-                    <div class="panel-body">
-
-                    <!--entry form-->
-                        <form action="">
-                            <div class="form-group">
-                                <label for="train-input">Train Name</label>
-                                <input type="text" class="form-control" id="trainInput">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="destination-input">Destination</label>
-                                <input type="text" class="form-control" id="destInput">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="train-time-input">First Train Time (HH:mm - military time)</label>
-                                <input type="text" class="form-control" id="timeInput">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="frequency-input">Frequency (min)</label>
-                                <input type="text" class="form-control" id="freqInput">
-                            </div>
-
-                            <button class="btn btn-primary" id="addTrainBtn" type="submit">Submit</button>
-
-                        </form>
-
-                    </div>
-                </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <!--clock-->
+          <div class="panel panel-primary clock">
+            <h2 class="text-center">Current Time:</h2>
+            <hr>
+            <h3 id="clock1" class="text-center"></h2>
+            <h3 id="clock2" class="text-center"></h2>
+          </div>
+          <br>
+          <!--current train schedule-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Current Train Schedule <i class="far fa-clock"></i></strong></h3>
             </div>
-       </div>
+
+            <div class="panel-body">
+              <table class="table table-hover" id="trainTable">
+                <thead>
+                  <tr>
+                    <th id="trainName">Train Name</th>
+                    <th id="dest">Destination</th>
+                    <th id="freq">Frequency</th>
+                    <th id="nxtArrvl">Next Arrival</th>
+                    <th id="minsAwy">Minutes Away</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <br>
+          <!--add a train-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Add Trains Here <i class="fas fa-list-ul"></i></strong></h3>
+            </div>
+            <div class="panel-body">
+
+              <!--entry form-->
+              <form action="">
+                <div class="form-group">
+                  <label for="train-input">Train Name</label>
+                  <input type="text" class="form-control" id="trainInput" placeholder="Train name...">
+                </div>
+
+                <div class="form-group">
+                  <label for="destination-input">Destination</label>
+                  <input type="text" class="form-control" id="destInput" placeholder="Destination...">
+                </div>
+
+                <div class="form-group">
+                  <label for="train-time-input">First Train Time (HH:mm - military time)</label>
+                  <input type="text" class="form-control" id="timeInput" placeholder="Time of first train...">
+                </div>
+
+                <div class="form-group">
+                  <label for="frequency-input">Frequency (in minutes)</label>
+                  <input type="text" class="form-control" id="freqInput" placeholder="Frequency...">
+                </div>
+
+                <button class="btn btn-primary" id="addTrainBtn" type="submit">Submit</button>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-<br>
-<footer class="footer">&copy; 2018 Holger Mueller</footer>
+  </div>
+  <br>
+  <footer class="footer">&copy; 2018 Holger Mueller <p class="credit">Image by Pexels</p> </footer>
 
   <!--javaScript-->
-    <script src="./assets/shed.js"></script>
+  <script src="./assets/logic.js"></script>
 </body>
+
 </html>

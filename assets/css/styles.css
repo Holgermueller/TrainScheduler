@@ -1,11 +1,22 @@
+body {
+  background-image: url(../images/train.png);
+  background-size: auto;
+  background-attachment: fixed;
+}
+
 .footer {
     text-align: center;
     background-color: #1f97dd;
-    width: 25%;
+    width: 100%;
     padding: 2px;
     color: ghostwhite;
     border-radius: 5px;
-    margin-left: 35%;
+}
+
+.credit {
+  font-size: .75em;
+  float: right;
+  margin-right: 4px;
 }
 
 .rmv {
@@ -13,4 +24,8 @@
     border: 1px solid ghostwhite;
     background-color: #1f97dd;
     color: ghostwhite;
+}
+
+td {
+  text-align: center;
 }

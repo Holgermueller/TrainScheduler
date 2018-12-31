@@ -39,8 +39,8 @@ $("#addTrainBtn").on("click", function (e) {
 let currentTime = moment();
 
 function update() {
-  $("#clock1").html(moment().format("MM-DD-YYYY"))
-  $("#clock2").html(moment().format("HH:mm:ss"));
+  $("#clock1").html(moment().format("MMM DD, YYYY"))
+  $("#clock2").html(moment().format("hh:mm:ss A"));
 }
 setInterval(update, 1000);
 
@@ -60,7 +60,7 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
   let nextTrain = moment().add(minutesLeft, "minutes");
 
   $("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse +
-    " " + "mins" + "</td><td>" + moment(nextTrain).format("HH:mm") + "</td><td>" + minutesLeft +
+    " " + "mins" + "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>" + minutesLeft +
     "</td><td><input type='button' id='rmv' class='rmv' value='X'></td></tr>")
 
   $('input[type="button"]').click(function (e) {
