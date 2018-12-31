@@ -35,7 +35,6 @@ $("#addTrainBtn").on("click", function (e) {
   $("#freqInput").val("");
 });
 
-
 let currentTime = moment();
 
 function update() {
@@ -45,7 +44,6 @@ function update() {
 setInterval(update, 1000);
 
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
-  let sv = snapshot.val();
   let trainName = snapshot.val().name;
   let destName = snapshot.val().destination;
   let timeName = snapshot.val().time;
@@ -60,7 +58,7 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
   let nextTrain = moment().add(minutesLeft, "minutes");
 
   $("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse +
-    " " + "mins" + "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>" + minutesLeft +
+    " " + "mins" + "</td><td>" + moment(nextTrain).format("hh:mm A") + "</td><td>" + minutesLeft + " m" +
     "</td><td><input type='button' id='rmv' class='rmv' value='X'></td></tr>")
 
   $('input[type="button"]').click(function (e) {
