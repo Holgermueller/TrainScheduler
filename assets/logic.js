@@ -59,10 +59,9 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
 
   $("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse +
     " " + "mins" + "</td><td>" + moment(nextTrain).format("hh:mm A") + "</td><td>" + minutesLeft + " m" +
-    "</td><td><input type='button' id='rmv' class='rmv' value='X'></td></tr>")
+    "</td><td><input type='button' id='update' class='update'  value='Update'></td><td><input type='button' id='rmv' class='rmv' value='Remove'></td></tr>")
 
   $('input[type="button"]').click(function (e) {
     $(this).closest('tr').remove();
   });
-
 });

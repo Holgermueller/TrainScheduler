@@ -25,3 +25,18 @@ body {
     background-color: #1f97dd;
     color: ghostwhite;
 }
+
+.rmv:hover {
+  background-color: yellowgreen;
+}
+
+.update {
+  border-radius: 15px;
+    border: 1px solid ghostwhite;
+    background-color: green;
+    color: ghostwhite;
+}
+
+.update:hover {
+  background-color: aquamarine;
+}
