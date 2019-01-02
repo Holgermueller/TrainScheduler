@@ -13,11 +13,18 @@ $(document).on('click', '#update', function () {
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form >
+          <div class="form-group">
+          <input type="text" class="form-group form-control" name="newTrainName" placeholder="Train name...">
+          <input type="text" class="form-group form-control" name="newDestination" placeholder="Destination...">
+          <input type="text" class="form-group form-control" name="newFirstTrainTime" placeholder="First train time...">
+          <input type="text" class="form-group form-control" name="newFrequency" placeholder="Frequency...">
+          <input type="Submit" class="update-submit form-group form-control btn btn-primary" name="update-submit" value="Update">
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Update</button>
       </div>
     </div>
   </div>

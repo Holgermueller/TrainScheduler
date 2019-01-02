@@ -53,7 +53,21 @@ body {
   text-decoration: none;
   padding: 4px;
 }
-.tool-tip:hover {
+.tool-tip:hover,
+.tool-tip:visited {
   color: white;
   text-decoration: none;
+}
+
+/* Modal form */
+.form-control {
+  display: inline-block;
+}
+
+.update-submit {
+  background-color: aqua;
+}
+
+.update-submit:hover {
+  background-color: blue;
 }
