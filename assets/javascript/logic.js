@@ -16,7 +16,6 @@ moment();
 
 $("#addTrainBtn").on("click", function (e) {
   e.preventDefault()
-
   let trainInput = $("#trainInput").val().trim();
   let destInput = $("#destInput").val().trim();
   let timeInput = moment($("#timeInput").val().trim(), "HH:mm").format();

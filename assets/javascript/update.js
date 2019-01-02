@@ -15,11 +15,11 @@ $(document).on('click', '#update', function () {
       <div class="modal-body">
         <form >
           <div class="form-group">
-          <input type="text" class="form-group form-control" name="newTrainName" placeholder="Train name...">
-          <input type="text" class="form-group form-control" name="newDestination" placeholder="Destination...">
-          <input type="text" class="form-group form-control" name="newFirstTrainTime" placeholder="First train time...">
-          <input type="text" class="form-group form-control" name="newFrequency" placeholder="Frequency...">
-          <input type="Submit" class="update-submit form-group form-control btn btn-primary" name="update-submit" value="Update">
+          <input type="text" id="newTrainName" class="form-group form-control" name="newTrainName" placeholder="Train name...">
+          <input type="text" id="newDestination" class="form-group form-control" name="newDestination" placeholder="Destination...">
+          <input type="text" id="newFirstTrainTime" class="form-group form-control" name="newFirstTrainTime" placeholder="First train time...">
+          <input type="text" id="newFrequency" class="form-group form-control" name="newFrequency" placeholder="Frequency...">
+          <input id="updateSubmit" type="Submit" class="update-submit form-group form-control btn btn-primary" name="update-submit" value="Update">
           </div>
         </form>
       </div>
@@ -30,4 +30,13 @@ $(document).on('click', '#update', function () {
   </div>
 </div>
   `);
+});
+
+$(document).on('click', '#updateSubmit', function(e) {
+  e.preventDefault();
+  let updatedTrain = $('#newTrainName').val().trim();
+  let newDestination = $('#newDestination').val().trim();
+  let newFirstTrainTime = $('#newFirstTrainTime').val().trim();
+  let newFrequency = $('#newFrequency').val().trim();
+  console.log(updatedTrain, newDestination, newFirstTrainTime, newFrequency);
 });
