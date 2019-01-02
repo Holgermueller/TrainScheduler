@@ -40,3 +40,20 @@ body {
 .update:hover {
   background-color: aquamarine;
 }
+
+/* Tool Tip */
+.tool-tip-div {
+  float: right;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+.tool-tip {
+  color: white;
+  text-decoration: none;
+  padding: 4px;
+}
+.tool-tip:hover {
+  color: white;
+  text-decoration: none;
+}
