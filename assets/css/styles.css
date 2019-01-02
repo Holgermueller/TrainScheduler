@@ -10,7 +10,7 @@ body {
     width: 100%;
     padding: 2px;
     color: ghostwhite;
-    border-radius: 5px;
+    bottom: 0;
 }
 
 .credit {

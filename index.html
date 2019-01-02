@@ -23,6 +23,32 @@
 </head>
 
 <body>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Log In</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form >
+                <div class="form-group">
+                <input type="text" id="usernam" class="form-group form-control" name="username" placeholder="Enter username...">
+                <input type="text" id="pwd" class="form-group form-control" name="pwd" placeholder="Enter password...">
+                <input id="loginSubmit" type="Submit" class="login-submit form-group form-control btn btn-primary" name="login-submit" value="LOG IN">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
   <div class="wrapper">
     <div class="container">
 
@@ -115,8 +141,7 @@
     </div>
   </div>
   <br>
-  <footer class="footer">&copy; 2018 Holger Mueller <p class="credit">Image by Pexels</p>
-  </footer>
+  <footer class="footer">&copy; 2018 Holger Mueller <p class="credit">Image by Pexels</p></footer>
 
   <!--jQuery-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
