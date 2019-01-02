@@ -23,8 +23,17 @@
 </head>
 
 <body>
+  <div class="wrapper">
+    <div class="container">
 
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="jumbotron jumbo-style jumbo">
+        <h1 class="text-center"><i class="fas fa-train"></i> Train Scheduler</h1>
+        <h3 class="text-center">The Go-To App for Trainspotters!</h3>
+      </div>
+
+      <!-- log in modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -34,11 +43,12 @@
               </button>
             </div>
             <div class="modal-body">
-              <form >
+              <form>
                 <div class="form-group">
-                <input type="text" id="usernam" class="form-group form-control" name="username" placeholder="Enter username...">
-                <input type="text" id="pwd" class="form-group form-control" name="pwd" placeholder="Enter password...">
-                <input id="loginSubmit" type="Submit" class="login-submit form-group form-control btn btn-primary" name="login-submit" value="LOG IN">
+                  <input type="text" id="username" class="form-group form-control" name="username" placeholder="Enter username...">
+                  <input type="text" id="pwd" class="form-group form-control" name="pwd" placeholder="Enter password...">
+                  <input id="loginSubmit" type="Submit" class="login-submit form-group form-control btn btn-primary"
+                    name="login-submit" value="LOG IN">
                 </div>
               </form>
             </div>
@@ -47,14 +57,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-  <div class="wrapper">
-    <div class="container">
-
-      <div class="jumbotron jumbo-style jumbo">
-        <h1 class="text-center"><i class="fas fa-train"></i> Train Scheduler</h1>
-        <h3 class="text-center">The Go-To App for Trainspotters!</h3>
       </div>
 
       <div class="row">
@@ -75,8 +77,8 @@
               <h3 class="panel-title">
                 <strong>Current Train Schedule <i class="far fa-clock"></i>
                   <div class="tool-tip-div">
-                      <a href="#" data-toggle="tooltip" class="tool-tip">?</a>
-                    </div>
+                    <a href="#" data-toggle="tooltip" class="tool-tip">?</a>
+                  </div>
                 </strong>
               </h3>
             </div>
@@ -98,8 +100,8 @@
                 </tbody>
               </table>
             </div>
-
           </div>
+
           <br>
           <!--add a train-->
           <div class="panel panel-primary">
@@ -141,7 +143,8 @@
     </div>
   </div>
   <br>
-  <footer class="footer">&copy; 2018 Holger Mueller <p class="credit">Image by Pexels</p></footer>
+  <footer class="footer">&copy; 2018 Holger Mueller <p class="credit">Image by Pexels</p>
+  </footer>
 
   <!--jQuery-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -158,7 +161,7 @@
   <!--moment.js-->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!--javaScript-->
-  <script src="./assets/javascript/login.js" ></script>
+  <script src="./assets/javascript/login.js"></script>
   <script src="./assets/javascript/logic.js"></script>
   <script src="./assets/javascript/update.js"></script>
   <script src="./assets/javascript/tooltip.js"></script>
