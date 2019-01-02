@@ -42,7 +42,7 @@ function update() {
 }
 setInterval(update, 1000);
 
-database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+database.ref().on("child_added", function (snapshot) {
   let trainName = snapshot.val().name;
   let destName = snapshot.val().destination;
   let timeName = snapshot.val().time;

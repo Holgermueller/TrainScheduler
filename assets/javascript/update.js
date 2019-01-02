@@ -17,13 +17,13 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <form>
         <div class="form-group">
           <input type="text" id="newTrainName" class="form-group form-control" name="newTrainName"
-            placeholder="Train name...">
+            value="Train name...">
           <input type="text" id="newDestination" class="form-group form-control" name="newDestination"
-            placeholder="Destination...">
+            value="Destination...">
           <input type="text" id="newFirstTrainTime" class="form-group form-control" name="newFirstTrainTime"
-            placeholder="First train time...">
+            value="First train time...">
           <input type="text" id="newFrequency" class="form-group form-control" name="newFrequency"
-            placeholder="Frequency...">
+            value="Frequency...">
           <input id="updateSubmit" type="Submit" class="update-submit form-group form-control btn btn-primary"
             name="update-submit" value="Update">
         </div>
