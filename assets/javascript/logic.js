@@ -45,22 +45,26 @@ setInterval(update, 1000);
 database.ref().on("child_added", function (snapshot) {
   let trainName = snapshot.val().name;
   let destName = snapshot.val().destination;
-  let timeName = snapshot.val().time;
-  let freqName = snapshot.val().frequency;
+  let timeFromDatabase = snapshot.val().time;
+  let frequencyFromDatabase = snapshot.val().frequency;
 
-  let freqParse = parseInt(freqName);
-  let timeMoment = moment(timeName);
+  let freqParse = parseInt(frequencyFromDatabase);
+  let timeMoment = moment(timeFromDatabase);
   let diffMinute = moment().diff(timeMoment, "minutes");
   let timeRemainder = diffMinute % freqParse;
   let minutesLeft = freqParse - timeRemainder;
 
   let nextTrain = moment().add(minutesLeft, "minutes");
+  console.log(moment().endOf(minutesLeft).fromNow());
 
   $("#trainTable > tbody").append("<tr id='row'><td>" + trainName + "</td><td>" + destName + "</td><td>" + freqParse +
     " " + "mins" + "</td><td>" + moment(nextTrain).format("hh:mm A") + "</td><td>" + minutesLeft + " m" +
     "</td><td><input type='button' id='update' class='update'  value='Update' data-toggle='modal' data-target='#exampleModalCenter'></td><td><input type='button' id='rmv' class='rmv' value='Remove'></td></tr>")
 
   $('#rmv').on("click", function (e) {
+    e.preventDefault();
+    const trainToRemove = database;
+    
     $(this).closest('tr').remove();
   });
 });
